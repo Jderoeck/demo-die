@@ -1,0 +1,18 @@
+.wrapper--login{
+  background-image: url(../../../public/images/Background1.svg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.wrapper--login__title{
+  height: 50%;
+  width: 50%;
+  font-size: 3.5em;
+  text-align: center;
+  vertical-align: middle;
+  flex: 2 0 0;
+  margin: auto 0;
+  margin-top: 20%;
+}
