@@ -30,7 +30,6 @@ block content
     h1(class='wrapper--login__title') Demo or Die
 
     a(class='btn wrapper--login__btn' id='fbloginbutton' href='/user') Log in
-    //a(class='btn wrapper--login__btn fb-login-button' data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" href='/user') Log in
   script(type='text/javascript').
     $('document').ready(function(){
         $('#fbloginbutton').click(function(e){
@@ -51,3 +50,6 @@ block content
 
         });
     });
+  ul
+      each val in users
+          li=val.hello
