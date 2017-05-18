@@ -1,53 +1,55 @@
 extends layout
 
 block content
-  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
-  script(type='text/javascript').
-      window.fbAsyncInit = function () {
-          FB.init({
-              appId: '221958468292998',
-              cookie: true,  // enable cookies to allow the server to access
-                             // the session
-              xfbml: true,  // parse social plugins on this page
-              version: 'v2.8' // use graph api version 2.8
-          });
-          FB.getLoginStatus(function (response) {
-              console.log(response);
-          });
-
-      };
-
-      (function (d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "//connect.facebook.net/nl_BE/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-  div(class='wrapper wrapper--login')
-    h1(class='wrapper--login__title') Demo or Die
-
-    a(class='btn wrapper--login__btn' id='fbloginbutton' href='/user') Log in
-    //a(class='btn wrapper--login__btn fb-login-button' data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" href='/user') Log in
-  script(type='text/javascript').
-    $('document').ready(function(){
-        $('#fbloginbutton').click(function(e){
-            e.preventDefault();
-            /*FB.getLoginStatus(function (response) {
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(type='text/javascript').
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '221958468292998',
+                cookie: true,  // enable cookies to allow the server to access
+                               // the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.8' // use graph api version 2.8
+            });
+            FB.getLoginStatus(function (response) {
                 console.log(response);
-            });*/
+            });
 
-            FB.login(function (response) {
-                console.log(response);
-                FB.api('/me', {fields:"email,name"}, function (response) {
-                    console.log(JSON.stringify(response));
-                });
-                FB.api('/me/picture', function (response) {
-                    console.log(JSON.stringify(response));
-                });
-            }, {scope: 'public_profile,email'});
+        };
 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/nl_BE/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    div(class='wrapper wrapper--login')
+        h1(class='wrapper--login__title') Demo or Die
+
+        a(class='btn wrapper--login__btn' id='fbloginbutton' href='/user') Log in
+    script(type='text/javascript').
+        $('document').ready(function(){
+            $('#fbloginbutton').click(function(e){
+                e.preventDefault();
+                /*FB.getLoginStatus(function (response) {
+                 console.log(response);
+                 });*/
+
+                FB.login(function (response) {
+                    console.log(response);
+                    FB.api('/me', {fields:"email,name"}, function (response) {
+                        console.log(JSON.stringify(response));
+                    });
+                    FB.api('/me/picture', function (response) {
+                        console.log(JSON.stringify(response));
+                    });
+                }, {scope: 'public_profile,email'});
+
+            });
         });
-    });
+    ul
+        each val in users
+            li=val.firstname
