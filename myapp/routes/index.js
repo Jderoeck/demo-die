@@ -3,15 +3,26 @@ const users = require('../controllers/user');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res , next) {
   //console.log('test');
   //console.log('users', users.list);
-  //res.render('index', {users: users.list});
+  res.render('index', {users: users.list});
   users.list(req, res, next);
 });
 
 router.get('/layout', function(req, res, next) {
-  res.render('user', { title: 'Demo or die' });
+  res.render('layout', {users: users.list});
+  users.list(req, res, next);
+});
+
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'Demo or die' }, {users: users.list});
+  users.list(req, res, next);
+});
+
+router.get('/group', function(req, res, next) {
+  res.render('group', { title: 'Demo or die' }, {users: users.list});
+  users.list(req, res, next);
 });
 
 /*router.get('/', function(req, res, next) {
