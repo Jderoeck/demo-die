@@ -1,5 +1,5 @@
 const User = require('./../models/user.js');
-
+//TODO: enkel listUsers uitgewerkt. De andere functies moeten nog aangepast worden.
 function createUser(req, res, next) {
     console.log(req.body);
     const user = new User(req.body);
@@ -13,20 +13,15 @@ function createUser(req, res, next) {
 }
 
 function listUsers (req, res, next) {
-    const user = new User({firtname:'Marten', lastname:'Felis', imageUrl:'test'})
-    user.save((err, result)=>{
-        User
-            .find()
-            .exec((err, users) => {
-                if (err) {
-                    return next(err);
-                }
-                console.log(users);
-                res.render('index', {users:users});
-            });
-    });
-
-
+    User
+        .find()
+        .exec((err, users) => {
+            if (err) {
+                return next(err);
+            }
+            console.log(users);
+            res.render('index', {users:users});
+        });
 
 }
 
