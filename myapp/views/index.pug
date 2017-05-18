@@ -32,8 +32,7 @@ block content
     a(class='btn wrapper--login__btn' id='fbloginbutton' href='/user') Log in
   script(type='text/javascript').
     $('document').ready(function(){
-        $('#fbloginbutton').click(function(e){
-            e.preventDefault();
+        $('#fbloginbutton').click(function(){
             /*FB.getLoginStatus(function (response) {
                 console.log(response);
             });*/
@@ -50,6 +49,3 @@ block content
 
         });
     });
-  ul
-      each val in users
-          li=val.firstname

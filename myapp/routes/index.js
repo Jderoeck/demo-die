@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   users.list(req, res, next);
 });
 
-router.get('/user', function(req, res, next) {
+router.get('/layout', function(req, res, next) {
   res.render('user', { title: 'Demo or die' });
 });
 
